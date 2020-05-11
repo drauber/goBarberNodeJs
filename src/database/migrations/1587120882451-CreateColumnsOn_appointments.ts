@@ -5,9 +5,9 @@ export default class CreateColumnsOnAppointments1587120882451
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
       `ALTER TABLE public.appointments
-      ADD COLUMN created_at timestamp without time zone;
+      ADD COLUMN created_at timestamp without time zone default now();
       ALTER TABLE public.appointments
-      ADD COLUMN updated_at timestamp without time zone;`
+      ADD COLUMN updated_at timestamp without time zone default now();`
     );
   }
 
