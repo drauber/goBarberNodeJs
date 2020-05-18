@@ -1,7 +1,7 @@
+import AppError, { AppError } from '@shared/errors/AppError';
 import { Request, Response, NextFunction } from 'express';
 import { verify, decode } from 'jsonwebtoken';
-import authConfig from '../config/auth';
-import AppError from '../erros/AppError';
+import authConfig from '@config/auth';
 
 interface TokenPayload {
   iat: number;
