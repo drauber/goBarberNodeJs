@@ -1,5 +1,3 @@
-import AppError from '@shared/errors/AppError';
-
 import FakeUserRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import ListProvidersService from './ListProvidersService';
 
