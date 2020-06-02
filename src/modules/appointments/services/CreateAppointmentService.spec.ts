@@ -1,25 +1,30 @@
-import { addHours, addDays } from 'date-fns';
+import { addHours } from 'date-fns';
 import AppError from '@shared/errors/AppError';
 
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import FakeNotificationsRepository from '@modules/notifications/repositories/fakes/FakeNotificationsRepository';
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
 import FakeAppointmentsRepository from '../repositories/fakes/FakeAppointmentsRepository';
+
 import CreateAppointmentService from './CreateAppointmentService';
 
 let fakeUsersRepository: FakeUsersRepository;
 let fakeNotificationsRepository: FakeNotificationsRepository;
 let fakeAppointmentRepository: FakeAppointmentsRepository;
 let createAppointmentRepository: CreateAppointmentService;
+let fakeCacheProvider: FakeCacheProvider;
 
 describe('CreateAppointment', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository();
     fakeNotificationsRepository = new FakeNotificationsRepository();
     fakeAppointmentRepository = new FakeAppointmentsRepository();
+    fakeCacheProvider = new FakeCacheProvider();
     createAppointmentRepository = new CreateAppointmentService(
       fakeAppointmentRepository,
       fakeUsersRepository,
-      fakeNotificationsRepository
+      fakeNotificationsRepository,
+      fakeCacheProvider
     );
   });
 
